@@ -13,3 +13,15 @@ export type GankResponse = {
   error : boolean,
   results : Array<Object>
 };
+
+export type MeiZhi = {
+  _id: string,
+  createdAt: string,
+  desc: string,
+  publishedAt: string,
+  source: string,
+  type: string,
+  url: string,
+  used: boolean,
+  who: string
+};

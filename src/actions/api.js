@@ -25,12 +25,17 @@ client.interceptors.response.use(response => {
 });
 
 export const apiURL = {
-  getHistory: 'history/content/5/1'
+  getHistory: 'history/content/5/1',
+  getMeiZhi: 'data/福利/20/',
 };
 
 export function fetchHistoryList(): Promise<Response> {
   return client.get(apiURL.getHistory);
 };
+
+export function fetchMeiZhiList(pageSize: number): Promise<Response> {
+  return client.get(apiURL.getMeiZhi + pageSize);
+}
 
 export function dispatchResponse(response: Response,
                                  dispatch: (action: Object) => void,

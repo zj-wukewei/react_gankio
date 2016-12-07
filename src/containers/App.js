@@ -1,25 +1,28 @@
 //@flow
 import {connect} from 'react-redux';
-import Home from '../components/Home';
+import MeiZhiList from '../components/MeiZhiList';
 import {
   thunkFetchHistoryList
 } from '../actions/history';
+import {
+  thunkFetchMeiZhiList
+} from '../actions/meizhi';
 import {List} from 'immutable';
 
 const mapStateToProps = (state) => {
   return {
-    list: state.get('historyReducer').get('results', List()).toArray(),
+    list: state.get('meiZhiReducer').get('results', List()).toArray(),
   };
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDataCallback: () => {
-      dispatch(thunkFetchHistoryList());
+    fetchDataCallback: (pageSize: number) => {
+      dispatch(thunkFetchMeiZhiList(pageSize));
     }
   }
 }
 const App = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(MeiZhiList);
 export default App;

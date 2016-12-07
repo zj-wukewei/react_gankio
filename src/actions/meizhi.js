@@ -4,23 +4,23 @@
  */
 
 import {
-  fetchHistoryList,
+  fetchMeiZhiList,
   dispatchResponse
 } from './api';
 
 import type {GankResponse} from '../flowtype/index';
 
 
-export const thunkFetchHistoryList = () => {
+export const thunkFetchMeiZhiList = (pageSize: number) => {
   return (dispatch: (action: Object) => void) => {
-    return fetchHistoryList()
+    return fetchMeiZhiList(pageSize)
       .then(response =>
-        dispatchResponse(response, dispatch, fetchedHistoryList)
+        dispatchResponse(response, dispatch, fetchedMeiZhiList)
       );
   }
 }
 
-const fetchedHistoryList = (response: GankResponse) => {
+const fetchedMeiZhiList = (response: GankResponse) => {
   return {
     type: 'FETCHED_MEIZHI_LIST',
     results: response.results

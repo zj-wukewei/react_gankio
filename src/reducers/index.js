@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux-immutable';
-import {historyReducer} from './history';
+import {historyReducer, meiZhiReducer} from './mainReducers';
 
 const rootReducer = combineReducers({
-  historyReducer
+  historyReducer,
+  meiZhiReducer
 });
 
 export default rootReducer;
