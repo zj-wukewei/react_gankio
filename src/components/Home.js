@@ -1,5 +1,6 @@
 //@flow
 import React, { Component } from 'react';
+import Spinner from './Spinner';
 
 type Props = {
   list : Array<Object>,
@@ -17,13 +18,7 @@ class Home extends Component {
   }
 
   render() {
-      const list = this.props.list;
-
-      return (
-        <div>
-          wukewei{list.length}
-        </div>
-      );
+    return <Spinner />;
   }
 }
 
