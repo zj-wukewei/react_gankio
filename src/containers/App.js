@@ -1,15 +1,25 @@
-import React, { Component } from 'react';
+//@flow
+import {connect} from 'react-redux';
+import Home from '../compnents/Home';
+import {
+  thunkFetchHistoryList
+} from '../actions/history';
+import {List} from 'immutable';
 
-class App extends Component {
-
-  render() {
-      return (
-        <div>
-          wukewei
-        </div>
-      );
+const mapStateToProps = (state) => {
+  return {
+    list: state.get('historyReducer').get('results', List()).toArray(),
+  };
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchDataCallback: () => {
+      dispatch(thunkFetchHistoryList());
+    }
   }
 }
-
-
+const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
 export default App;
