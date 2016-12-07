@@ -1,6 +1,6 @@
 //@flow
 import {connect} from 'react-redux';
-import Home from '../compnents/Home';
+import Home from '../components/Home';
 import {
   thunkFetchHistoryList
 } from '../actions/history';
