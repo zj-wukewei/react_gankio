@@ -13,7 +13,8 @@ import type {GankResponse} from '../flowtype/index';
 
 export const thunkFetchMeiZhiList = (pageSize: number) => {
   return (dispatch: (action: Object) => void) => {
-    return fetchMeiZhiList(pageSize)
+    dispatch(fetchingMeiZhiList());
+    fetchMeiZhiList(pageSize)
       .then(response =>
         dispatchResponse(response, dispatch, fetchedMeiZhiList)
       );
@@ -24,5 +25,11 @@ const fetchedMeiZhiList = (response: GankResponse) => {
   return {
     type: 'FETCHED_MEIZHI_LIST',
     results: response.results
+  }
+}
+
+const fetchingMeiZhiList = () => {
+  return {
+    type: 'FETCHINF_MEIZHI_LIST'
   }
 }

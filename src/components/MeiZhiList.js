@@ -5,26 +5,22 @@
 import React, { Component } from 'react';
 import Spinner from './Spinner';
 import MeiZhiItem from './MeiZhiItem';
+import InfiniteScroll from './InfiniteScroll';
 import type {MeiZhi} from '../flowtype/index';
+import {throttle} from 'lodash';
 
 type Props = {
   list : Array<MeiZhi>,
+  isFetching: boolean,
   fetchDataCallback : (pageSize: number) => void
 };
 
-const pageSize: number = 1;
+let pageSize: number = 1;
 
 class MeiZhiList extends Component {
 
-  state: {
-    list: Array<MeiZhi>
-  };
-
   constructor(props: Props) {
     super(props);
-    this.state = {
-      list: []
-    }
   }
 
   componentDidMount() {
@@ -33,24 +29,41 @@ class MeiZhiList extends Component {
 
   renderContent() {
     const list = this.props.list;
-    const items = [];
-    list.map((meizhi: MeiZhi) => {
-      items.push(
-        <MeiZhiItem
-          key={meizhi._id}
-          meizhi={meizhi}/>
-      );
+    return list.map((meizhi: MeiZhi) => {
+        return (
+          <MeiZhiItem
+            key={meizhi._id}
+            meizhi={meizhi}
+          />
+        );
     });
-    return items;
+  }
+
+  fetchMeiZhisNextPage() {
+      pageSize ++;
+      this.props.fetchDataCallback(pageSize);
+  }
+
+  renderSpinner() {
+    const list = this.props.list;
+    const isFetching = this.props.isFetching;
+
+    if (list && list.length > 0 && isFetching) {
+      return <Spinner />
+    }
+    return null;
   }
 
   render() {
     const list = this.props.list;
     if (list && list.length > 0) {
       return (
-        <div>
+        <InfiniteScroll
+          className="meizhis"
+          scrollFunc={throttle(() => {this.fetchMeiZhisNextPage()}, 1000)}>
           {this.renderContent()}
-        </div>
+          {this.renderSpinner()}
+        </InfiniteScroll>
       )
     } else {
       return (<Spinner />);

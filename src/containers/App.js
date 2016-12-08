@@ -12,6 +12,7 @@ import {List} from 'immutable';
 const mapStateToProps = (state) => {
   return {
     list: state.get('meiZhiReducer').get('results', List()).toArray(),
+    isFetching: state.get('meiZhiReducer').get('isFetching')
   };
 }
 const mapDispatchToProps = (dispatch) => {
