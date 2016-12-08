@@ -35,11 +35,10 @@ class MeiZhiList extends Component {
     const list = this.props.list;
     const items = [];
     list.map((meizhi: MeiZhi) => {
-      console.log("meizhi! : " + meizhi.desc);
       items.push(
         <MeiZhiItem
           key={meizhi._id}
-          meizhi={meizhi} />
+          meizhi={meizhi}/>
       );
     });
     return items;
@@ -47,14 +46,16 @@ class MeiZhiList extends Component {
 
   render() {
     const list = this.props.list;
-    return (
-      <div>
-        {this.renderContent()}
-      </div>
-    );
-
+    if (list && list.length > 0) {
+      return (
+        <div>
+          {this.renderContent()}
+        </div>
+      )
+    } else {
+      return (<Spinner />);
+    }
   }
 }
-
 
 export default MeiZhiList;

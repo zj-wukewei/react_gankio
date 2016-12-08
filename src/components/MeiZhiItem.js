@@ -19,7 +19,13 @@ class MeiZhiItem extends Component {
   render() {
     const meizhi: MeiZhi = this.props.meizhi;
     return (
-      <div>{meizhi.desc}</div>
+      <div className="meizhi-list-item">
+        <div
+          className="meizhi-list-item__image"
+          style={{ backgroundImage: `url(${meizhi.url})` }}
+        />
+        {meizhi.desc}
+      </div>
     );
   }
 }
