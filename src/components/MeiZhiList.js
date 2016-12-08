@@ -39,7 +39,7 @@ class MeiZhiList extends Component {
     });
   }
 
-  fetchMeiZhisNextPage() {
+  fetchMeiZhiNextPage() {
       pageSize ++;
       this.props.fetchDataCallback(pageSize);
   }
@@ -60,7 +60,7 @@ class MeiZhiList extends Component {
       return (
         <InfiniteScroll
           className="meizhis"
-          scrollFunc={throttle(() => {this.fetchMeiZhisNextPage()}, 1000)}>
+          scrollFunc={throttle(() => {this.fetchMeiZhiNextPage()}, 1000)}>
           {this.renderContent()}
           {this.renderSpinner()}
         </InfiniteScroll>

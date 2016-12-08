@@ -1,29 +1,33 @@
-//@flow
+/**
+ * Created by wukewei on 16/12/7.
+ * @flow
+ */
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import MeiZhiList from '../components/MeiZhiList';
-import {
-  thunkFetchHistoryList
-} from '../actions/history';
-import {
-  thunkFetchMeiZhiList
-} from '../actions/meizhi';
-import {List} from 'immutable';
+import { initEnvironment } from '../actions/environment';
+
+class AppContainer extends Component {
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(initEnvironment());
+  }
+
+  render() {
+    const {width, height} = this.props;
+    return (
+      <div className="content" style={{ height: `${height}px`, width: `${width}px` }}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
-    list: state.get('meiZhiReducer').get('results', List()).toArray(),
-    isFetching: state.get('meiZhiReducer').get('isFetching')
+    width: state.get('environmentReducer').get('width'),
+    height: state.get('environmentReducer').get('height')
   };
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchDataCallback: (pageSize: number) => {
-      dispatch(thunkFetchMeiZhiList(pageSize));
-    }
-  }
-}
-const App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MeiZhiList);
-export default App;
+};
+
+export default connect(mapStateToProps)(AppContainer);

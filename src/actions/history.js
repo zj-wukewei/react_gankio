@@ -18,11 +18,11 @@ export const thunkFetchHistoryList = () => {
         dispatchResponse(response, dispatch, fetchedHistoryList)
       );
   }
-}
+};
 
 const fetchedHistoryList = (response: GankResponse) => {
   return {
     type: 'FETCHED_MEIZHI_LIST',
     results: response.results
   }
-}
+};

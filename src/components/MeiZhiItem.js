@@ -3,7 +3,6 @@
  * @flow
  */
 import React, { Component } from 'react';
-import Spinner from './Spinner';
 import type {MeiZhi} from '../flowtype/index';
 
 type Props = {
@@ -19,13 +18,12 @@ class MeiZhiItem extends Component {
   render() {
     const meizhi: MeiZhi = this.props.meizhi;
     return (
-      <div className="meizhi-list-item">
+      <a className="meizhi-list-item">
         <div
           className="meizhi-list-item__image"
           style={{ backgroundImage: `url(${meizhi.url})` }}
         />
-        {meizhi.desc}
-      </div>
+      </a>
     );
   }
 }

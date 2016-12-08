@@ -31,3 +31,16 @@ export const meiZhiReducer = (state: Object = Map(), action: Object) => {
       return state;
   }
 };
+
+export const environmentReducer = (state: Object = Map(), action: Object) => {
+  switch (action.type) {
+
+    case 'CHANGE_WIDTH_AND_HEIGHT':
+      console.log('CHANGE_WIDTH_AND_HEIGHT' + action.width + action.height);
+      state = state.set('width', action.width).set('height', action.height);
+      return state;
+
+    default:
+      return state;
+  }
+};
