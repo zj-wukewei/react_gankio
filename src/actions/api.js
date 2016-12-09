@@ -13,7 +13,7 @@ const client = axios.create({
 
 client.interceptors.response.use(response => {
   console.log('[axios] ---Response received---');
-  console.log('[axios] response:')
+  console.log('[axios] response:');
   console.log(response.data);
   console.log('[axios] (end)');
   return response;

@@ -1,20 +1,15 @@
 [ignore]
 
-# We fork some components by platform.
-.*/*[.]android.js
 
 # Ignore templates with `@flow` in header
 .*/local-cli/generator.*
 
 
 
-[include]
-
-[libs]
 
 [options]
 module.system=haste
-
+module.name_mapper='\(antd-mobile\)' -> '\1/lib/index.web.js'
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
 

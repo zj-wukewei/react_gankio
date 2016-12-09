@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { initEnvironment } from '../actions/environment';
+import Footer from '../components/Footer';
 
 class AppContainer extends Component {
 

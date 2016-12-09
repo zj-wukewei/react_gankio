@@ -1,0 +1,21 @@
+.common-footer {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  left: 0;
+  background: #ffffff;
+  position:fixed;
+  bottom:0;
+}
+
+.common-footer-li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 6px 0;
+  &.active {
+    background: #e3e3e3;
+  }
+}

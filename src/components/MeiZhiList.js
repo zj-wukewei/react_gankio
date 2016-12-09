@@ -1,13 +1,12 @@
 /**
  * Created by wukewei on 16/12/7.
- * @flow
+ *@flow
  */
-import React, { Component } from 'react';
-import Spinner from './Spinner';
-import MeiZhiItem from './MeiZhiItem';
-import InfiniteScroll from './InfiniteScroll';
-import type {MeiZhi} from '../flowtype/index';
-import {throttle} from 'lodash';
+import React, {Component} from "react";
+import Spinner from "./Spinner";
+import MeiZhiItem from "./MeiZhiItem";
+import type {MeiZhi} from "../flowtype/index";
+import {ListView} from "antd-mobile";
 
 type Props = {
   list : Array<MeiZhi>,
@@ -16,33 +15,36 @@ type Props = {
 };
 
 let pageSize: number = 1;
+let loadMoreTime: number = 0;
 
 class MeiZhiList extends Component {
 
+  state: {
+    dataSource: ListView.DataSource,
+  };
+
   constructor(props: Props) {
     super(props);
+    this.state = {
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 !== r2,
+      })
+    };
   }
 
   componentDidMount() {
     this.props.fetchDataCallback(pageSize);
   }
 
-  renderContent() {
-    const list = this.props.list;
-    return list.map((meizhi: MeiZhi) => {
-        return (
+  renderContent(rowData: MeiZhi) {
+    return (
           <MeiZhiItem
-            key={meizhi._id}
-            meizhi={meizhi}
+            key={rowData._id}
+            meizhi={rowData}
           />
         );
-    });
   }
 
-  fetchMeiZhiNextPage() {
-      pageSize ++;
-      this.props.fetchDataCallback(pageSize);
-  }
 
   renderSpinner() {
     const list = this.props.list;
@@ -54,16 +56,37 @@ class MeiZhiList extends Component {
     return null;
   }
 
+  onEndReached() {
+    // load new data
+    const time: number  = (+new Date() ) / 1000;
+    if (time - loadMoreTime > 1) {
+      pageSize ++;
+      loadMoreTime = (+new Date() ) / 1000;
+      this.props.fetchDataCallback(pageSize);
+    }
+
+  }
+
   render() {
     const list = this.props.list;
     if (list && list.length > 0) {
       return (
-        <InfiniteScroll
-          className="meizhis"
-          scrollFunc={throttle(() => {this.fetchMeiZhiNextPage()}, 1000)}>
-          {this.renderContent()}
-          {this.renderSpinner()}
-        </InfiniteScroll>
+        <ListView
+          dataSource={this.state.dataSource.cloneWithRows(list)}
+          renderFooter={() => this.renderSpinner()}
+          renderRow={this.renderContent}
+          style={{
+          height: document.body.clientHeight - 50,
+          overflow: 'auto',
+          border: '1px solid #ddd',
+          margin: '10px 0',
+        }}
+          pageSize={20}
+          scrollRenderAheadDistance={500}
+          scrollEventThrottle={20}
+          onEndReached={() => this.onEndReached()}
+          onEndReachedThreshold={10}
+        />
       )
     } else {
       return (<Spinner />);
