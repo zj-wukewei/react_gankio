@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { initEnvironment } from '../actions/environment';
-import Footer from '../components/Footer';
+import {NavBar, Icon} from 'antd-mobile';
 
 class AppContainer extends Component {
 
@@ -18,6 +18,10 @@ class AppContainer extends Component {
     const {width, height} = this.props;
     return (
       <div className="content" style={{ height: `${height}px`, width: `${width}px` }}>
+        <div>
+          <NavBar leftContent="返回" mode="light" onLeftClick={() => console.log('onLeftClick')}
+          >NavBar</NavBar>
+        </div>
         {this.props.children}
       </div>
     );
