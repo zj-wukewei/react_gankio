@@ -4,13 +4,13 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { initEnvironment } from '../actions/environment';
+import {initEnvironment} from '../actions/environment';
 import {NavBar, Icon} from 'antd-mobile';
 
 class AppContainer extends Component {
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     dispatch(initEnvironment());
   }
 
@@ -18,10 +18,6 @@ class AppContainer extends Component {
     const {width, height} = this.props;
     return (
       <div className="content" style={{ height: `${height}px`, width: `${width}px` }}>
-        <div>
-          <NavBar leftContent="返回" mode="light" onLeftClick={() => console.log('onLeftClick')}
-          >NavBar</NavBar>
-        </div>
         {this.props.children}
       </div>
     );

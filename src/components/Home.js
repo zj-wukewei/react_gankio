@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { TabBar } from 'antd-mobile';
 import MeiZhiList from '../containers/MeiZhiList';
 import Android from '../components/Android';
+import ToolBar from '../components/ToolBar';
 
 class Home extends Component {
 
@@ -33,6 +34,12 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <div>
+          <ToolBar
+            title="首页"
+            canBack={false}
+          />
+        </div>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"

@@ -3,15 +3,44 @@
  * @flow
  */
 import React, {Component, PropTypes} from 'react';
-import {nav} from 'antd-mobile';
+import {NavBar} from 'antd-mobile';
+import {actions} from 'react-router';
+import {hashHistory} from 'react-router';
 
-const propType = {
-  title: PropTypes.string,
-  
-};
+type Props = {
+  title: string,
+  onLeftClick: () => void,
+  canBack: boolean,
+  right: boolean,
+}
 
-const ToolBar = () => {
+class ToolBar extends Component {
+  constructor(props: Props) {
+    super(props);
+  }
 
-};
+  render() {
+    const canBack = this.props.canBack;
+    let onLeftClick = this.props.onLeftClick;
+    let iconName = '';
+
+    if (canBack) {
+      iconName = 'left';
+    }
+
+    if (canBack && !onLeftClick) {
+      onLeftClick = () => {
+        hashHistory.goBack();
+      };
+    }
+
+
+    return (
+      <NavBar iconName={iconName} onLeftClick={onLeftClick}>
+        {this.props.title}
+      </NavBar>
+    );
+  }
+}
 
 export default ToolBar;
