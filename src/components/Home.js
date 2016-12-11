@@ -8,6 +8,7 @@ import {TabBar} from 'antd-mobile';
 import MeiZhiList from '../containers/MeiZhiList';
 import Android from '../components/Android';
 import ToolBar from '../components/ToolBar';
+import Colors from '../constans/Colors';
 
 class Home extends Component {
 
@@ -41,8 +42,8 @@ class Home extends Component {
           />
         </div>
         <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
+          unselectedTintColor={Colors.unselectedTintColor}
+          tintColor={Colors.tintColor}
           barTintColor="white"
         >
           <TabBar.Item

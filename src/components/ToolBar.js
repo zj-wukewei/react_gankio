@@ -6,6 +6,7 @@ import React, {Component, PropTypes} from 'react';
 import {NavBar} from 'antd-mobile';
 import {actions} from 'react-router';
 import {hashHistory} from 'react-router';
+import Colors from '../constans/Colors';
 
 type Props = {
   title: string,
@@ -36,7 +37,7 @@ class ToolBar extends Component {
 
 
     return (
-      <NavBar iconName={iconName} onLeftClick={onLeftClick}>
+      <NavBar iconName={iconName} onLeftClick={onLeftClick} color={Colors.tintColor}>
         {this.props.title}
       </NavBar>
     );
