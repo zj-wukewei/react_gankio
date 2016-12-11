@@ -17,9 +17,6 @@ class RouterContent extends Component {
       <Router history={hashHistory}>
         <Route path= '/' component={App}>
           <IndexRoute component={Home}/>
-          <Route path="home" component={MeiZhiList} />
-          <Route path="android" component={Android} />
-          <Route path="ios" component={Ios} />
         </Route>
       </Router>
     );

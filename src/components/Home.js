@@ -3,8 +3,8 @@
  * https://github.com/andrewngu/sound-redux
  * @flow
  */
-import React, { Component } from 'react';
-import { TabBar } from 'antd-mobile';
+import React, {Component} from 'react';
+import {TabBar} from 'antd-mobile';
 import MeiZhiList from '../containers/MeiZhiList';
 import Android from '../components/Android';
 import ToolBar from '../components/ToolBar';
@@ -12,13 +12,13 @@ import ToolBar from '../components/ToolBar';
 class Home extends Component {
 
   state: {
-    selectedTab: string
+    title: string
   };
 
   constructor(props: Object) {
     super(props);
     this.state = {
-      selectedTab: 'meizhi',
+      title: '妹纸'
     }
   }
 
@@ -36,7 +36,7 @@ class Home extends Component {
       <div>
         <div>
           <ToolBar
-            title="首页"
+            title={this.state.title}
             canBack={false}
           />
         </div>
@@ -50,10 +50,10 @@ class Home extends Component {
             key="首页"
             icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/UNQhIatjpNZHjVf.png' }}
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/HLkBvJOKnmOfBPO.png' }}
-            selected={this.state.selectedTab === 'home'}
+            selected={this.state.title === '首页'}
             onPress={() => {
             this.setState({
-              selectedTab: 'home',
+              title: '首页'
             });
           }}
           >
@@ -62,12 +62,12 @@ class Home extends Component {
           <TabBar.Item
             icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/UNQhIatjpNZHjVf.png' }}
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/HLkBvJOKnmOfBPO.png' }}
-            title="图片"
-            key="图片"
-            selected={this.state.selectedTab === 'meizhi'}
+            title="妹纸"
+            key="妹纸"
+            selected={this.state.title === '妹纸'}
             onPress={() => {
             this.setState({
-              selectedTab: 'meizhi',
+              title: '妹纸'
             });
           }}
           >
@@ -78,10 +78,10 @@ class Home extends Component {
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/LWNaMdwAFSmYBFw.png' }}
             title="android"
             key="android"
-            selected={this.state.selectedTab === 'android'}
+            selected={this.state.title === 'android'}
             onPress={() => {
             this.setState({
-              selectedTab: 'android',
+              title: 'android'
             });
           }}
           >
@@ -92,10 +92,10 @@ class Home extends Component {
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/WadBBxOIZtDzsgP.png' }}
             title="ios"
             key="ios"
-            selected={this.state.selectedTab === 'ios'}
+            selected={this.state.title === 'ios'}
             onPress={() => {
             this.setState({
-              selectedTab: 'ios',
+              title: 'ios'
             });
           }}
           >
