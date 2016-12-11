@@ -23,7 +23,7 @@ class Home extends Component {
   }
 
 
-  _renderContent(pageText: string) {
+  renderContent(pageText: string) {
     return (
       <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
         <div style={{ paddingTop: 60 }}>你已点击“{pageText}” tab， 当前展示“{pageText}”信息</div>
@@ -48,8 +48,8 @@ class Home extends Component {
           <TabBar.Item
             title="首页"
             key="首页"
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/UNQhIatjpNZHjVf.png' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/HLkBvJOKnmOfBPO.png' }}
+            icon={require('../../server/pic/home.png')}
+            selectedIcon={require('../../server/pic/selected_home.png')}
             selected={this.state.title === '首页'}
             onPress={() => {
             this.setState({
@@ -57,11 +57,11 @@ class Home extends Component {
             });
           }}
           >
-            {this._renderContent('生活')}
+            {this.renderContent('生活')}
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/UNQhIatjpNZHjVf.png' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/HLkBvJOKnmOfBPO.png' }}
+            icon={require('../../server/pic/meizhi.png')}
+            selectedIcon={require('../../server/pic/selected_meizhi.png')}
             title="妹纸"
             key="妹纸"
             selected={this.state.title === '妹纸'}
@@ -74,8 +74,8 @@ class Home extends Component {
             <MeiZhiList />
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/EljxLrJEShWZObW.png' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/LWNaMdwAFSmYBFw.png' }}
+            icon={require('../../server/pic/android.png')}
+            selectedIcon={require('../../server/pic/selected_android.png')}
             title="android"
             key="android"
             selected={this.state.title === 'android'}
@@ -88,8 +88,8 @@ class Home extends Component {
             <Android />
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/YWpPVCVOnJoCYhs.png' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/WadBBxOIZtDzsgP.png' }}
+            icon={require('../../server/pic/ios.png')}
+            selectedIcon={require('../../server/pic/selected_ios.png')}
             title="ios"
             key="ios"
             selected={this.state.title === 'ios'}
@@ -99,7 +99,7 @@ class Home extends Component {
             });
           }}
           >
-            {this._renderContent('我的')}
+            {this.renderContent('我的')}
           </TabBar.Item>
         </TabBar>
       </div>
