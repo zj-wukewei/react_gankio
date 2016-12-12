@@ -5,9 +5,9 @@
 import React, {Component} from 'react';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import App from './containers/App';
-import MeiZhiList from './containers/MeiZhiList';
+import MeiZhiList from './containers/MeiZhiListContainer';
 import Home from './components/Home';
-import Android from './components/Android';
+import Android from './components/AndroidList';
 import Ios from './components/IOS';
 
 class RouterContent extends Component {

@@ -25,3 +25,16 @@ export type MeiZhi = {
   used: boolean,
   who: string
 };
+
+export type Android = {
+  _id: string,
+  createdAt: string,
+  desc: string,
+  images: Array<string>,
+  publishedAt: string,
+  source: string,
+  type: string,
+  url: string,
+  used: boolean,
+  who: string
+}

@@ -1,14 +1,13 @@
 /**
  * Created by wukewei on 16/12/7.
- * https://github.com/andrewngu/sound-redux
  * @flow
  */
 import React, {Component} from 'react';
 import {TabBar} from 'antd-mobile';
-import MeiZhiList from '../containers/MeiZhiList';
-import Android from '../components/Android';
+import MeiZhiListContainer from '../containers/MeiZhiListContainer';
+import AndroidListContainer from '../containers/AndroidListContainer';
 import ToolBar from '../components/ToolBar';
-import Colors from '../constans/Colors';
+import Colors from '../constants/Colors';
 
 class Home extends Component {
 
@@ -72,7 +71,7 @@ class Home extends Component {
             });
           }}
           >
-            <MeiZhiList />
+            <MeiZhiListContainer />
           </TabBar.Item>
           <TabBar.Item
             icon={require('../../server/pic/android.png')}
@@ -86,7 +85,7 @@ class Home extends Component {
             });
           }}
           >
-            <Android />
+            <AndroidListContainer />
           </TabBar.Item>
           <TabBar.Item
             icon={require('../../server/pic/ios.png')}

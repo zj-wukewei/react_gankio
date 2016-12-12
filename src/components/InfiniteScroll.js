@@ -1,6 +1,6 @@
 /**
  * Created by wukewei on 16/12/8.
- *
+ * https://github.com/andrewngu/sound-redux
  */
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';

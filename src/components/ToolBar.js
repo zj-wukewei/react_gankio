@@ -6,7 +6,7 @@ import React, {Component, PropTypes} from 'react';
 import {NavBar} from 'antd-mobile';
 import {actions} from 'react-router';
 import {hashHistory} from 'react-router';
-import Colors from '../constans/Colors';
+import Colors from '../constants/Colors';
 
 type Props = {
   title: string,

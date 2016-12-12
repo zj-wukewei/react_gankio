@@ -7,6 +7,7 @@ import Spinner from "./Spinner";
 import MeiZhiItem from "./MeiZhiItem";
 import type {MeiZhi} from "../flowtype/index";
 import {ListView} from "antd-mobile";
+import {PAGE_SIZE} from '../constants/Constants';
 
 type Props = {
   list : Array<MeiZhi>,
@@ -31,6 +32,7 @@ class MeiZhiList extends Component {
       })
     };
   }
+
 
   componentDidMount() {
     this.props.fetchDataCallback(pageSize);
@@ -81,7 +83,7 @@ class MeiZhiList extends Component {
           border: '1px solid #ddd',
           margin: '10px 0',
         }}
-          pageSize={20}
+          pageSize={PAGE_SIZE}
           scrollRenderAheadDistance={500}
           scrollEventThrottle={20}
           onEndReached={() => this.onEndReached()}

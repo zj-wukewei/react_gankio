@@ -1,6 +1,6 @@
 /**
  * Created by wukewei on 16/12/7.
- * https://github.com/andrewngu/sound-redux
+ *
  * @flow
  */
 import React, { Component } from 'react';

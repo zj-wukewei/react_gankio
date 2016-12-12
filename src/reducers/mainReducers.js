@@ -32,6 +32,22 @@ export const meiZhiReducer = (state: Object = Map(), action: Object) => {
   }
 };
 
+export const androidReducer = (state: Object = Map(), action: Object) => {
+  switch (action.type) {
+
+    case 'FETCHINF_ANDROID_LIST':
+      state = state.set('isFetching', true);
+      return state;
+
+    case 'FETCHED_ANDROID_LIST':
+      state = state.set('results', state.get('results', List()).concat(List(action.results))).set('isFetching', false);
+      return state;
+
+    default:
+      return state;
+  }
+};
+
 export const environmentReducer = (state: Object = Map(), action: Object) => {
   switch (action.type) {
 

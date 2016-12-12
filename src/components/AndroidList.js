@@ -1,7 +1,6 @@
 /**
  * Created by wukewei on 16/12/7.
- * https://github.com/andrewngu/sound-redux
- *
+ *@flow
  */
 import React,{Component} from 'react';
 import { ListView } from 'antd-mobile';
@@ -45,10 +44,19 @@ const data = [
   },
 ];
 
+type Props = {
+  list : Array<MeiZhi>,
+  isFetching: boolean,
+  fetchDataCallback : (pageSize: number) => void
+};
 
 class Android extends Component {
 
-  constructor(props) {
+  state: {
+    dataSource: ListView.DataSource
+  };
+
+  constructor(props: Props) {
     super(props);
 
     this.state =  {
