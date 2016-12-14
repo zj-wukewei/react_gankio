@@ -7,6 +7,7 @@ import { ListView } from 'antd-mobile';
 import Spinner from "./Spinner";
 import type {Android} from '../flowtype/index';
 import {PAGE_SIZE} from '../constants/Constants';
+import AndroidItem from './AndroidiItem';
 
 type Props = {
   list : Array<Android>,
@@ -60,29 +61,12 @@ class AndroidList extends Component {
   }
 
   renderContent(rowData: Android) {
-    if (rowData.images && rowData.images.length > 0) {
-
-      return (
-        <div>
-        <a className="meizhi-list-item">
-          <img
-            className="meizhi-list-item__image"
-            src={rowData.images[0]}
-          />
-        </a>
-          <div>
-            {rowData.images[0]}
-          </div>
-        </div>
-      );
-
-    }
-
 
     return (
-        <div>
-          {rowData.publishedAt}
-        </div>
+       <AndroidItem
+         key={rowData._id}
+         android={rowData}
+       />
     );
 
   }
