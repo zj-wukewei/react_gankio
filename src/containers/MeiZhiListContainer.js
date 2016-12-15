@@ -12,7 +12,8 @@ import {List} from 'immutable';
 const mapStateToProps = (state) => {
   return {
     list: state.get('meiZhiReducer').get('results', List()).toArray(),
-    isFetching: state.get('meiZhiReducer').get('isFetching')
+    isFetching: state.get('meiZhiReducer').get('isFetching'),
+    noMore: state.get('meiZhiReducer').get('noMore')
   };
 };
 

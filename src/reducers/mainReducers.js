@@ -24,7 +24,8 @@ export const meiZhiReducer = (state: Object = Map(), action: Object) => {
       return state;
 
     case 'FETCHED_MEIZHI_LIST':
-      state = state.set('results', state.get('results', List()).concat(List(action.results))).set('isFetching', false);
+      state = state.set('results', state.get('results', List()).concat(List(action.results)))
+        .set('isFetching', false).set('noMore', action.results.length === 0);
       return state;
 
     default:

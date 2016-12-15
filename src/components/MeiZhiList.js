@@ -6,12 +6,13 @@ import React, {Component} from "react";
 import Spinner from "./Spinner";
 import MeiZhiItem from "./MeiZhiItem";
 import type {MeiZhi} from "../flowtype/index";
-import {ListView} from "antd-mobile";
+import {ListView, Toast} from "antd-mobile";
 import {PAGE_SIZE} from '../constants/Constants';
 
 type Props = {
   list : Array<MeiZhi>,
   isFetching: boolean,
+  noMore: boolean,
   fetchDataCallback : (pageSize: number) => void
 };
 
@@ -67,6 +68,13 @@ class MeiZhiList extends Component {
       this.props.fetchDataCallback(pageSize);
     }
 
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    const isFetching = this.props;
+    if (isFetching && !nextProps.isFetching && nextProps.noMore) {
+      Toast.info('没有更多数据了');
+    }
   }
 
   render() {
